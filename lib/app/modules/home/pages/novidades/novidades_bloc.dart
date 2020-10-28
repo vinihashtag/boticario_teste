@@ -21,6 +21,8 @@ class NovidadesBloc extends Disposable {
   Future<void> getNovidades() async {
     try {
       final NewsModel lista = await _repository.getNovidades();
+      lista.news.sort((a, b) => DateTime.parse(b.message.createdAt)
+          .compareTo(DateTime.parse(a.message.createdAt)));
       setListaNews(lista.news);
     } catch (e) {
       if (e is DioError &&

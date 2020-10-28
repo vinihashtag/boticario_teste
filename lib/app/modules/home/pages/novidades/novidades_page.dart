@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animator/flutter_animator.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class NovidadesPage extends StatefulWidget {
   final String title;
@@ -119,7 +120,7 @@ class _NovidadesPageState extends ModularState<NovidadesPage, NovidadesBloc> {
                                     padding:
                                         const EdgeInsets.symmetric(vertical: 5),
                                     child: Text(
-                                      novidade.user.name,
+                                      '${novidade.user.name} - ${DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(novidade.message.createdAt))}',
                                       style: TextStyle(
                                           fontSize: 24,
                                           fontWeight: FontWeight.bold),
